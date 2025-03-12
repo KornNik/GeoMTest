@@ -1,5 +1,6 @@
 ﻿using Behaviours;
 using Helpers;
+using Helpers.Extensions;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace UI
         private void OnEnable()
         {
             this.EventStartListening<AttributesInfoEvent>();
+            AttributesRequestEvent.Trigger();
         }
         private void OnDisable()
         {
@@ -33,9 +35,16 @@ namespace UI
 
         private void FillAttributes(SendingAttributesInfo attributesInfo)
         {
-            _health.text = attributesInfo.Health.ToString();
-            _damage.text = attributesInfo.Damage.ToString();
-            _speed.text = attributesInfo.Speed.ToString();
+            var health = StringBuilderExtender.CreateString
+                ("Health is ", attributesInfo.Health.ToString());
+            var damage = StringBuilderExtender.CreateString
+                ("Damage is ", attributesInfo.Damage.ToString());
+            var speed = StringBuilderExtender.CreateString
+                ("Speed is ", attributesInfo.Speed.ToString());
+
+            _health.text = health;
+            _damage.text = damage;
+            _speed.text = speed;
         }
 
         public void OnEventTrigger(AttributesInfoEvent eventType)

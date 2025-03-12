@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Behaviours;
+using Data;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +27,8 @@ namespace UI
         [SerializeField] private TMP_Text _description;
         [SerializeField] private Sprite _emptyBoostImage;
 
+        private BoosterData _data;
+
         private void Awake()
         {
             
@@ -38,11 +42,12 @@ namespace UI
             _selectButton.onClick.RemoveListener(OnSelectButtonDown);
         }
 
-        public void FillSlot(SlotContent slotContent)
+        public void FillSlot(BoosterData boosterData)
         {
-            _image.sprite = slotContent.Sprite;
-            _title.text = slotContent.Title;
-            _description.text = slotContent.Description;
+            _image.sprite = boosterData.Sprite;
+            _title.text = boosterData.Title;
+            _description.text = boosterData.Description;
+            _data = boosterData;
         }
         public void ClearSlot()
         {
@@ -53,7 +58,8 @@ namespace UI
 
         private void OnSelectButtonDown()
         {
-
+            BoostSelectEvent.Trigger(_data);
+            ChangeGameStateEvent.Trigger(GameStateType.GameState);
         }
     }
 }

@@ -19,13 +19,17 @@ namespace Behaviours
 
         private void CamerasDataInitialization()
         {
-            var dataResources = Services.Instance.DatasBundle.ServicesObject.GetData<CamerasInitilaizationData>();
+            var dataResources = Services.Instance.DatasBundle.ServicesObject.
+                GetData<CamerasInitilaizationData>();
             _camerasData = dataResources;
         }
         private void MainCameraInitialization()
         {
-            var mainCameraResource = Services.Instance.DatasBundle.ServicesObject.GetData<DataResourcePrefabs>().GetCamerPrefab();
-            var mainCameraObject = GameObject.Instantiate(mainCameraResource, _camerasData.GetMainCameraPosition(), Quaternion.identity).GetComponent<Camera>();
+            var mainCameraResource = Services.Instance.DatasBundle.ServicesObject.
+                GetData<DataResourcePrefabs>().GetCamerPrefab();
+            var mainCameraObject = GameObject.Instantiate(mainCameraResource,
+                _camerasData.GetMainCameraPosition(), Quaternion.Euler
+                (_camerasData.GetMainCameraRotation())).GetComponent<Camera>();
 
             Services.Instance.CameraService.SetObject(mainCameraObject);
         }

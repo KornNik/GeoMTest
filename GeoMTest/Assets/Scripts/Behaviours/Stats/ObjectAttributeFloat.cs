@@ -20,13 +20,14 @@ namespace Attributes
     {
         public ObjectAttributeFloat() : base()
         {
-            _stat = new Stat<ObjectAttribute<float>>(_currentValue, this);
+
         }
         public ObjectAttributeFloat(AttributeDataFloat attributesData) : this()
         {
             _maxValue = attributesData.MaxValue;
             _minValue = attributesData.MinValue;
             _currentValue = attributesData.CurrentValue;
+            _stat = new Stat(_currentValue);
         }
         public ObjectAttributeFloat(float maxValue, float minValue, float currentValue):base (maxValue, minValue, currentValue) { }
 

@@ -6,7 +6,7 @@ namespace Behaviours
     {
         None,
         MenuState,
-        PauseState,
+        BoostsSelectState,
         GameState,
         ExitLevelState,
         LoadLevelState

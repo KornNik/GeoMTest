@@ -1,4 +1,5 @@
-﻿using Helpers;
+﻿using Data;
+using Helpers;
 using UnityEngine;
 
 namespace Behaviours
@@ -18,12 +19,12 @@ namespace Behaviours
     }
     struct BoosterSendInfoEvent
     {
-        private SendingBoostersInfo _boostersInfo;
+        private BoosterData[] _boostersInfo;
         private static BoosterSendInfoEvent _boostersPickUpEvent;
 
-        public SendingBoostersInfo BoostersInfo => _boostersInfo;
+        public BoosterData[] BoostersInfo => _boostersInfo;
 
-        public void Trigger(SendingBoostersInfo boostersInfo)
+        public static void Trigger(BoosterData[] boostersInfo)
         {
             _boostersPickUpEvent._boostersInfo = boostersInfo;
             EventManager.TriggerEvent(_boostersPickUpEvent);

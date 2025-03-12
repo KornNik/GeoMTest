@@ -22,10 +22,19 @@ namespace Behaviours
 
         public SendingAttributesInfo AttributesInfo => _attributesInfo;
 
-        public void Trigger(SendingAttributesInfo attributesInfo)
+        public static void Trigger(SendingAttributesInfo attributesInfo)
         {
             _attributesInfoEvent._attributesInfo = attributesInfo;
             EventManager.TriggerEvent(_attributesInfoEvent);
+        }
+    }
+    struct AttributesRequestEvent
+    {
+        private static AttributesRequestEvent _attributesRequestEvent;
+
+        public static void Trigger()
+        {
+            EventManager.TriggerEvent(_attributesRequestEvent);
         }
     }
 }

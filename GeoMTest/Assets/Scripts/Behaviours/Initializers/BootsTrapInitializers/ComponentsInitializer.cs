@@ -5,7 +5,7 @@
         protected override void FillInitializers()
         {
             Initializers.Add(new CamerasInitializer());
-            Initializers.Add(new LevelLoaderInitializer());
+            Initializers.Add(new LoadersInitializer());
             Initializers.Add(new GameStateControllerInitializer());
         }
     }

@@ -5,11 +5,10 @@ using System.Collections.ObjectModel;
 namespace Attributes
 {
     [Serializable]
-    class Stat<T> where T : IBaseAttribute
+    class Stat
     {
         public Action OnStatChanged;
 
-        public readonly T Source;
         public readonly float BaseValue;
         public readonly ReadOnlyCollection<StatModifier> Modifiers;
 
@@ -25,9 +24,8 @@ namespace Attributes
             _modifiers = new List<StatModifier>();
             Modifiers = _modifiers.AsReadOnly();
         }
-        public Stat(float baseValue, T source) : this()
+        public Stat(float baseValue) : this()
         {
-            Source = source;
             BaseValue = baseValue;
             _currentValue = baseValue;
             _statsCalculator = new StatsCalculator(_modifiers, BaseValue);

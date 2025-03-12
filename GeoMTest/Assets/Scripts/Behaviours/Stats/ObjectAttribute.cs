@@ -6,7 +6,7 @@
         protected T _minValue;
         protected T _currentValue;
 
-        protected Stat<ObjectAttribute<T>> _stat;
+        protected Stat _stat;
 
         public T MaxValue => _maxValue;
         public T MinValue => _minValue;

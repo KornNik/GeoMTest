@@ -1,16 +1,18 @@
 ﻿using Helpers;
 using System.Threading.Tasks;
 using System;
+using UnityEngine;
 
 namespace Behaviours
 {
     sealed class LoadLevelState : BaseState
     {
-        private ILevelLoader _levelLoader;
+        private LoadersStorage _loaders;
 
         public LoadLevelState(GameStateController stateController) : base(stateController)
         {
-            _levelLoader = Services.Instance.LevelLoader.ServicesObject;
+            _loaders = Services.Instance.Loaders.ServicesObject;
+
         }
 
         public override void EnterState()
@@ -21,6 +23,7 @@ namespace Behaviours
         private async void LoadAll()
         {
             await LoadTask(LoadLevelBehaviours);
+            await LoadTask(LoadObjects);
             await LoadTask(StartGameState);
         }
 
@@ -31,7 +34,12 @@ namespace Behaviours
         }
         private void LoadLevelBehaviours()
         {
-            _levelLoader.LoadLevelByIndex(0);
+            _loaders.LevelLoader.LoadLevelByIndex(0);
+        }
+        private void LoadObjects()
+        {
+            _loaders.PlayerLoader.LoadOnPlace(Services.Instance.Level.ServicesObject.PlayerSpawn.position);
+            _loaders.BoosterLoader.LoadOnPlace(Services.Instance.Level.ServicesObject.BoosterSpawn.position);
         }
         private void StartGameState()
         {

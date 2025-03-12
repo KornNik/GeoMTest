@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f7198ad581db140b3bb3346dccf9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostsGroup: {fileID: 0}
+  _boostsGroup: {fileID: 6948815522499487235}
 --- !u!1 &7085718689953021201
 GameObject:
   m_ObjectHideFlags: 0

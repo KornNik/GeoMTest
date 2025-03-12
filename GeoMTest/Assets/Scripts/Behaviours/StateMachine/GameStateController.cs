@@ -25,7 +25,7 @@ namespace Behaviours
         {
             _states.Clear();
             _states.Add(GameStateType.MenuState, new MenuState(this));
-            _states.Add(GameStateType.PauseState, new BoostsSelectState(this));
+            _states.Add(GameStateType.BoostsSelectState, new BoostsSelectState(this));
             _states.Add(GameStateType.GameState, new GameState(this));
             _states.Add(GameStateType.ExitLevelState, new ExitLevelState(this));
             _states.Add(GameStateType.LoadLevelState, new LoadLevelState(this));
